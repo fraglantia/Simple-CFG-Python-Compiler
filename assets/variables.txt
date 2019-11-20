@@ -1,3 +1,6 @@
 S
-L
-D
+A
+E
+Op
+Int
+Signint

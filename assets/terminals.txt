@@ -16,3 +16,13 @@ eps
 %
 (
 )
+&
+|
+:
+if
+elif
+else
+while
+for
+[
+]
