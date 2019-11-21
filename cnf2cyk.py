@@ -85,7 +85,7 @@ def build_cyk(s):
 
 
 
-variables, terminals, rules, start_symbol = generate_cnf()
+terminals, variables, rules, start_symbol = generate_cnf()
 
 cyk = []
 

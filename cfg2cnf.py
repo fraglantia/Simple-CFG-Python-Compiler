@@ -2,14 +2,6 @@
 import copy
 import itertools
 
-def load_variables(filename='./assets/variables.txt'):
-	# VARIABLES AS ARRAY (newline seperated)
-	f = open(filename)
-	data = f.read()
-	variables = data.split('\n')
-	f.close()
-	return variables
-
 def load_terminals(filename='./assets/terminals.txt'):
 	# TERMINALS AS ARRAY (newline seperated)
 	f = open(filename)
@@ -24,6 +16,8 @@ def load_rules(filename='./assets/rules.txt'):
 	data = f.read()
 	lines = data.split('\n')
 	f.close()
+
+	variables = []
 
 	start_symbol = ''
 	rules = {}
@@ -41,12 +35,13 @@ def load_rules(filename='./assets/rules.txt'):
 			start_symbol = key
 
 		rules[key] = new_arr
+		variables.append(key)
 
-	return rules, start_symbol
+	return variables, rules, start_symbol
 
 def load_CFG():
 	global rules, variables, terminals, start_symbol
-	variables, terminals, (rules, start_symbol) = load_variables(), load_terminals(), load_rules()
+	terminals, (variables, rules, start_symbol) = load_terminals(), load_rules()
 
 # ===================================================================
 
@@ -442,4 +437,4 @@ def generate_cnf():
 	eliminate_nonsingle_term()
 	eliminate_nondouble_var()
 	# pretty_print_rules()
-	return variables, terminals, rules, start_symbol
+	return terminals, variables, rules, start_symbol
