@@ -4,4 +4,10 @@ E
 Op
 Int
 Signint
-If
+B
+C
+D
+F
+G
+H
+I

@@ -26,3 +26,8 @@ while
 for
 [
 ]
+i
+f
+e
+l
+s
