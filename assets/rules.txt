@@ -5,6 +5,8 @@ Op -> + | - | / | // | * | ** | %
 Int -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | Int;Int
 Signint -> -;Int | +;Int
 I -> i;f
-W -> w;h;i;l;e
+W -> w;h;i;l;e;Blank;Hrf;:
+Blank ->  
 E -> e;l;s;e
 EI -> e;l;i;f
+Hrf -> a | b | c | d | Hrf
