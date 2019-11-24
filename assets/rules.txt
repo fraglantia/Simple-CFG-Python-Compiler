@@ -1,7 +1,7 @@
 *S -> A1
 A1 -> Exp | I | W | El | EI
-Exp -> Blank;Exp;Blank;Op;Blank;Exp;Blank | Blank;Int;Blank | Blank;Signint | Blank;(;Blank;Exp;Blank;);Blank
-Op -> + | - | / | /;/ | * | *;* | %
+Exp -> Blank;Exp;Blank;Op;Blank;Exp;Blank | Blank;Int;Blank | Blank;Signint | Blank;(;Blank;Exp;Blank;);Blank | Blank;Hrf;Blank;Op;Blank;Hrf;Blank
+Op -> + | - | / | /;/ | * | *;* | % | > | < | >;= | <;= | =;= | !;= | <;> | a;n;d
 Int -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | Int;Int
 Signint -> -;Int | +;Int
 W -> w;h;i;l;e;ExpW
