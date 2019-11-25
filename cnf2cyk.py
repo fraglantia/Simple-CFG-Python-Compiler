@@ -92,6 +92,9 @@ cyk = []
 
 f = open('./test.py')
 s = list(f.read())
+s = ['enter' if x == '\n' else x for x in s]
+s = ['tab' if x == '\t' else x for x in s]
+# print(s)
 
 # s = list(input("input lang: "))
 
