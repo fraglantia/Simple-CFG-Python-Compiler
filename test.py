@@ -1,1 +1,1 @@
-class a ()        : 
+from                      numpy                   import np
