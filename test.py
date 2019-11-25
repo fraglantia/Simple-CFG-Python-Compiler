@@ -1,2 +1,1 @@
-def kucing    :         
-	print("a")
+class a ()        : 
