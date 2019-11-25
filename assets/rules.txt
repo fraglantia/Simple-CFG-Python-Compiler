@@ -1,9 +1,9 @@
 *S -> A1
-A1 -> Exp | I | W | El | EI | C | D | IM | FI | T | F
+A1 -> Exp | I | W | El | EI | C | D | IM | FI | T | F | NN
 Exp -> Blank;Exp;Blank;Op;Blank;Exp;Blank | Blank;Hrf;Blank | Blank;Signint | Blank;(;Blank;Exp;Blank;);Blank
 Op -> + | - | / | /;/ | * | *;* | % | > | < | >;= | <;= | =;= | = | !;= | <;> | Blank2;a;n;d;Blank2 | Blank2;o;r;Blank2 | Blank;n;o;t;Blank2;Exp | & | |
 Int -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | Int;Int
-Hrf -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | _ | Hrf;Hrf | Hrf;Int | eps
+Hrf -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | _ | Hrf;Hrf | Hrf;Int | Int
 Signint -> -;Int | +;Int
 W -> w;h;i;l;e;ExpW | w;h;i;l;e;ExpW;Exp
 ExpW -> Blank2;Int;Blank;:;Blank | Blank2;Exp;:;Blank
@@ -12,11 +12,13 @@ Blank2 ->   | Blank2;Blank2
 I -> i;f;ExpW | tab;i;f;ExpW
 El -> e;l;s;e;Blank;:
 EI -> e;l;i;f;ExpW
-C -> c;l;a;s;s;Blank2;Hrf;Blank;KB;Blank;KT;Blank;:;Blank;enter;tab | c;l;a;s;s;Blank2;Hrf;Blank;KB;Blank;KT;Blank;:;Blank
+C -> c;l;a;s;s;Blank2;Hrf;Blank;KB;Blank;KT;Blank;:;Blank;enter;tab | c;l;a;s;s;Blank2;Hrf;Blank;KB;Blank;KT;Blank;:;Exp
 KB -> ( | eps
 KT -> ) | eps
-D -> d;e;f;Blank2;Hrf;Blank;(;Hrf;);Blank;:;Blank;enter;tab | d;e;f;Blank2;Hrf;Blank;(;Hrf;);Blank;:;Blank;Hrf
+D -> d;e;f;Blank2;Hrf;Blank;(;HrfD;);Blank;:;Blank;enter;tab | d;e;f;Blank2;Hrf;Blank;(;HrfD;);Blank;:;Blank;Exp
+HrfD -> Hrf | eps
 IM -> i;m;p;o;r;t;Blank2;Blank;Hrf;Blank | i;m;p;o;r;t;Blank2;Blank;Hrf;Blank;Blank2;a;s;Blank2;Blank;Hrf;Blank
 FI -> f;r;o;m;Blank2;Blank;Hrf;Blank;Blank2;IM
 T -> T;r;u;e
 F -> F;a;l;s;e
+NN -> N;o;n;e | N;o;n;e;Blank;Exp | Hrf;Blank;Op;Blank;N;o;n;e | N;o;n;e;Blank;Op;Blank;N;o;n;e

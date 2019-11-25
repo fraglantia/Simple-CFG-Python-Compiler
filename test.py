@@ -1,1 +1,1 @@
-import    numpy     as  a      
+def kucing(aaaa): 1
