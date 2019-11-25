@@ -1,12 +1,12 @@
 *S -> A1
 A1 -> Exp | I | W | El | EI | C | D | IM | FI
-Exp -> Blank;Exp;Blank;Op;Blank;Exp;Blank | Blank;Int;Blank | Blank;Signint | Blank;(;Blank;Exp;Blank;);Blank
+Exp -> Blank;Exp;Blank;Op;Blank;Exp;Blank | Blank;Hrf;Blank | Blank;Signint | Blank;(;Blank;Exp;Blank;);Blank
 Op -> + | - | / | /;/ | * | *;* | % | > | < | >;= | <;= | =;= | = | !;= | <;> | Blank2;a;n;d;Blank2 | Blank2;o;r;Blank2 | Blank;n;o;t;Blank2;Exp | & | |
 Int -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | Int;Int
 Hrf -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | _ | Hrf;Hrf | Hrf;Int | eps
 Signint -> -;Int | +;Int
 W -> w;h;i;l;e;ExpW
-ExpW -> Blank2;Int;Blank;: | Blank2;Exp;:
+ExpW -> Blank2;Int;Blank;:;Blank | Blank2;Exp;:;Blank | Blank2;Exp;:;Blank;I
 Blank ->   | eps | Blank;Blank
 Blank2 ->   | Blank2;Blank2
 I -> i;f;ExpW | tab;i;f;ExpW
