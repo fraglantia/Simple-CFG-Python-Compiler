@@ -20,6 +20,8 @@ StringComp -> Hrf | Angka | Op | eps
 String -> ";StringComp;" | ';StringComp;StringComp;'
 Bool -> T;r;u;e | F;a;l;s;e
 Assign -> Var;=;Angka | Var;=;Var | Var;=;Bool
+Pr -> p;r;i;n;t;(;PrComp;)
+PrComp -> Angka | String | Var
 W -> w;h;i;l;e;ExpW | w;h;i;l;e;ExpW;Exp
 ExpW -> Blank2;Int;Blank;:;Blank | Blank2;Exp;:;Blank
 I -> i;f;ExpW | tab;i;f;ExpW
@@ -36,4 +38,4 @@ IM -> i;m;p;o;r;t;Blank2;Blank;Hrf;Blank | i;m;p;o;r;t;Blank2;Blank;Hrf;Blank;Bl
 FI -> f;r;o;m;Blank2;Blank;Hrf;Blank;Blank2;IM
 NN -> N;o;n;e | N;o;n;e;Blank;Exp | Hrf;Blank;Op;Blank;N;o;n;e | N;o;n;e;Blank;Op;Blank;N;o;n;e
 F -> f;o;r;Blank2;Var;Blank2;i;n;Blank2;r;a;n;g;e;Blank;ExpF;Blank;:
-ExpF -> (;Blank;Int;Blank;) | (;Int;,;Int;) | (;Int;,;Int;,;Int;)
+ExpF -> (;Blank;Int;Blank;) | (;Blank;Int;Blank;,;Blank;Int;Blank;) | (;Blank;Int;Blank;,;Blank;Int;Blank;,;Blank;Int;Blank;)
