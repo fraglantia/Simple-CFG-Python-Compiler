@@ -1,5 +1,6 @@
 from cfg2cnf import *
 import itertools
+import time
 
 def generate_sub(s, l):
 	assert l <= len(s)
@@ -89,19 +90,26 @@ terminals, variables, rules, start_symbol = generate_cnf()
 
 cyk = []
 
-# s = ['a', 'a', 'a', 'a', 'a', 'a']
-# s = ['1', '+', '1']
-# s = list("11+11")
+f = open('./test.py')
+s = list(f.read())
+s = ['enter' if x == '\n' else x for x in s]
+s = ['tab' if x == '\t' else x for x in s]
+# print(s)
 
-s = list(input("input lang: "))
+# s = list(input("input lang: "))
 
-print()
+# print()
 
-pretty_print_rules()
+# pretty_print_rules()
 
-print()
+# print()
+
+# t = time.time()
 
 build_cyk(s)
+
+
+# print(cyk)
 
 for el in cyk:
 	print(el)
@@ -114,3 +122,5 @@ if(verdict):
 	print('Accepted')
 else:
 	print('Syntax Error')
+
+# print(time.time()-t)
