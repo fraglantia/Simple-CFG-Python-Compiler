@@ -1,1 +1,2 @@
-while a and b    :
+def kucing    :         
+	print("a")
