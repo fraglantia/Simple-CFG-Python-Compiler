@@ -1,5 +1,5 @@
 *S -> A1
-A1 -> Exp | I | W | El | EI | C | D | IM | FI
+A1 -> Exp | I | W | El | EI | C | D | IM | FI | T | F
 Exp -> Blank;Exp;Blank;Op;Blank;Exp;Blank | Blank;Hrf;Blank | Blank;Signint | Blank;(;Blank;Exp;Blank;);Blank
 Op -> + | - | / | /;/ | * | *;* | % | > | < | >;= | <;= | =;= | = | !;= | <;> | Blank2;a;n;d;Blank2 | Blank2;o;r;Blank2 | Blank;n;o;t;Blank2;Exp | & | |
 Int -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | Int;Int
@@ -16,5 +16,7 @@ C -> c;l;a;s;s;Blank2;Hrf;Blank;KB;Blank;KT;Blank;:;Blank;enter;tab | c;l;a;s;s;
 KB -> ( | eps
 KT -> ) | eps
 D -> d;e;f;Blank2;Hrf;Blank;(;Hrf;);Blank;:;Blank;enter;tab | d;e;f;Blank2;Hrf;Blank;(;Hrf;);Blank;:;Blank;Hrf
-IM -> i;m;p;o;r;t;Blank2;Blank;Hrf;Blank
+IM -> i;m;p;o;r;t;Blank2;Blank;Hrf;Blank | i;m;p;o;r;t;Blank2;Blank;Hrf;Blank;Blank2;a;s;Blank2;Blank;Hrf;Blank
 FI -> f;r;o;m;Blank2;Blank;Hrf;Blank;Blank2;IM
+T -> T;r;u;e
+F -> F;a;l;s;e
