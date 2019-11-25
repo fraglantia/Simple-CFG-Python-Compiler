@@ -1,2 +1,1 @@
-while a:
-	1+2
+while a and b    :
