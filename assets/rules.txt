@@ -1,5 +1,5 @@
 *S -> A1
-A1 -> Exp | I | F | W | C | D | IM | FI | Bool | NN | String | A1;enter;A1
+A1 -> Exp | I | F | W | C | D | IM | FI | Bool | NN | String | Comment1 | A1;enter;A1 | List
 Exp -> Exp;Blank;Op;Blank;Exp | Hrf | Signint | (;Blank;Exp;Blank;) | Angka | OpPre;Blank2;Exp
 Op -> + | - | / | /;/ | * | *;* | % | > | < | & | | | ^ | >;= | <;= | =;= | = | !;= | Blank2;a;n;d;Blank2 | Blank2;o;r;Blank2
 Int -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | Int;Int
@@ -7,17 +7,26 @@ Float -> Int;.;Int
 Angka -> Int | Float
 Hrf ->  | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | Hrf;Hrf
 Signint -> -;Int | +;Int
-Op -> + | - | / | /;/ | * | *;* | % | > | < | >;= | <;= | =;= | = | !;= | Blank2;a;n;d;Blank2 | Blank2;o;r;Blank2 | & | | | ^ | 
+Op -> + | - | / | /;/ | * | *;* | % | > | < | >;= | <;= | =;= | = | !;= | Blank2;a;n;d;Blank2 | Blank2;o;r;Blank2 | & | | | ^ | >;> | <;<
 OpPre -> n;o;t | ~
+OtherChar -> ` | ~ | @ | # | $ | { | } | \ | ; | / | _
+Kutipganda -> "
+KutipTunggal -> '
+ListComp1 -> Blank;String;Blank;,;Blank | ListComp1;ListComp1 | eps
+ListComp2 -> Blank;Angka;Blank;,;Blank | ListComp2;ListComp2 | eps
+ListComp3 -> Blank;Var;Blank;,;Blank | ListComp3;ListComp3 | eps
+List -> [;Blank;] | [;ListComp1;String;] | [;ListComp2;Angka;] | [;ListComp2;Var;]
 Blank ->   | eps | Blank;Blank
 Blank2 ->   | Blank2;Blank2
 US -> _ | eps
 VarInit -> Hrf | _
-VarExtend -> Us;Hrf;US | US;Hrf;US;Int;US | US;Int;US | US;Int;US;Hf;US | VarExtend;VarExtend | eps
+VarExtend -> US;Hrf;US | US;Hrf;US;Int;US | US;Int;US | US;Int;US;Hf;US | VarExtend;VarExtend | eps
 Var -> VarInit;VarExtend
 VarEps -> Var | eps
-StringComp -> Hrf | Angka | Op | eps
-String -> ";StringComp;" | ';StringComp;StringComp;'
+StringComp1 -> Hrf | Angka | Op | OtherChar | Blank | KutipTunggal | eps | StringComp1;StringComp1
+StringComp2 -> Hrf | Angka | Op | OtherChar | Blank | Kutipganda | eps | StringComp2;StringComp2
+String -> ";StringComp1;" | ';StringComp2;'
+Comment1 -> #;StringComp1 | #;StringComp2
 Bool -> T;r;u;e | F;a;l;s;e
 Assign -> Var;=;Angka | Var;=;Var | Var;=;Bool
 Pr -> p;r;i;n;t;(;PrComp;)
@@ -37,5 +46,6 @@ D -> d;e;f;Blank2;Var;Blank;(;VarEps;);Blank;:;Blank;enter;tab | d;e;f;Blank2;Hr
 IM -> i;m;p;o;r;t;Blank2;Blank;Hrf;Blank | i;m;p;o;r;t;Blank2;Blank;Hrf;Blank;Blank2;a;s;Blank2;Blank;Hrf;Blank
 FI -> f;r;o;m;Blank2;Blank;Hrf;Blank;Blank2;IM
 NN -> N;o;n;e | N;o;n;e;Blank;Exp | Hrf;Blank;Op;Blank;N;o;n;e | N;o;n;e;Blank;Op;Blank;N;o;n;e
-F -> f;o;r;Blank2;Var;Blank2;i;n;Blank2;r;a;n;g;e;Blank;ExpF;Blank;:
+F -> f;o;r;Blank2;Var;Blank2;i;n;Blank2;ExpF1;Blank;:
+ExpF1 -> r;a;n;g;e;Blank;ExpF;Blank | Var | String | List
 ExpF -> (;Blank;Int;Blank;) | (;Blank;Int;Blank;,;Blank;Int;Blank;) | (;Blank;Int;Blank;,;Blank;Int;Blank;,;Blank;Int;Blank;)
