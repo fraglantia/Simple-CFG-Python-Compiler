@@ -101,7 +101,6 @@ def find_last_acc(s):
 	for el in cyk:
 		if(start_symbol in el[1]):
 			if(is_pre_arr(el[0], s)):
-				print(el)
 				line = el[0].count('enter')
 
 	return line+1
@@ -109,34 +108,39 @@ def find_last_acc(s):
 
 # tampilkan kesalahan ===========
 
-s = lexer_run()
-print(s)
+def compile_CYK(path):
+	global cyk, terminals, variables, rules, start_symbol
+	s = lexer_run(path)
+	# print(s)
+
+	t = time.time()
+	terminals, variables, rules, start_symbol = generate_cnf()
+
+	print("cnf generated in {:.2f} seconds".format(time.time()-t))
+	print()
+	cyk = []
 
 
-t = time.time()
-terminals, variables, rules, start_symbol = generate_cnf()
+	t = time.time()
 
-print("cnf generated in {:.2f} seconds".format(time.time()-t))
+	print("generating cyk:")
 
-cyk = []
+	build_cyk(s)
 
+	# pretty_print_rules()
 
-t = time.time()
+	# for el in cyk:
+	# 	print(el)
 
-build_cyk(s)
+	verdict = (start_symbol in get_val(s, cyk))
 
-for el in cyk:
-	print(el)
+	print()
+	print("Verdict:")
 
-print()
+	if(verdict):
+		print('Accepted')
+	else:
+		print('Syntax Error')
+		print("error at line {}!".format(find_last_acc(s)))
 
-verdict = (start_symbol in get_val(s, cyk))
-
-if(verdict):
-	print('Accepted')
-else:
-	print('Syntax Error')
-	print("error at line {}!".format(find_last_acc(s)))
-
-print()
-print("cyk generated in {:.2f} seconds".format(time.time()-t))
+	print("cyk generated in {:.2f} seconds".format(time.time()-t))

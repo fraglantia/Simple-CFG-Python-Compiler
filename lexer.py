@@ -32,7 +32,7 @@ def lex(s, rules):
 	return matches
 
 
-def lexer_run():
+def lexer_run(path):
 	rules = [
 			('\n|\r\n',			'enter'),
 			('\t|    ',			'tab'),
@@ -107,7 +107,7 @@ def lexer_run():
 		]
 
 
-	f = open('test.py')
+	f = open(path)
 	s = f.read()
 
 
