@@ -4,7 +4,8 @@ suite -> simple_stmt | enter;suite_star
 suite_star -> stmt | suite_star;suite_star
 stmt -> simple_stmt | compound_stmt
 simple_stmt -> small_stmt;enter
-small_stmt -> expr_stmt | pass_stmt | flow_stmt | import_stmt
+comment -> commentline | multiline1 | multiline2
+small_stmt -> expr_stmt | pass_stmt | flow_stmt | import_stmt | comment
 expr_stmt -> testlist;annassign | testlist;augassign;testlist | testlist;expr_stmt_star
 expr_stmt_star -> assignment;testlist | eps | expr_stmt_star;expr_stmt_star
 augassign -> plusassign | minassign | kaliassign | divassign | intdivassign | modassign | bitandassign | bitorassign | bitxorassign | shiftsassign | pangkatassign
