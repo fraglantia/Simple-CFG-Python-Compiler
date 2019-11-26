@@ -36,16 +36,19 @@ ExpW -> Blank2;Int;Blank;:;Blank | Blank2;Exp;:;Blank
 I -> i;f;ExpW | tab;i;f;ExpW
 El -> e;l;s;e;Blank;:
 EI -> e;l;i;f;ExpW
-C -> c;l;a;s;s;Blank2;Hrf;Blank;KB;Blank;KT;Blank;:;Blank;enter;tab | c;l;a;s;s;Blank2;Hrf;Blank;KB;Blank;KT;Blank;:;Exp
+C -> c;l;a;s;s;Blank2;Var;Blank;KB;Blank;KT;Blank;:;Blank;enter;tab | c;l;a;s;s;Blank2;Var;Blank;KB;Blank;KT;Blank;:;Blank;Exp;Blank
 KB -> ( | eps
 KT -> ) | eps
 Ret -> r;e;t;u;r;n;(;RetVal;) | r;e;t;u;r;n;Blank2;RetVal
 RetVal -> Angka | Var | Hrf
 BreakCont -> b;r;e;a;k | c;o;n;t;i;n;u;e
-D -> d;e;f;Blank2;Var;Blank;(;VarEps;);Blank;:;Blank;enter;tab | d;e;f;Blank2;Hrf;Blank;(;HrfD;);Blank;:;Blank;Exp
+D -> d;e;f;Blank2;Var;Blank;(;VarEps;);Blank;:;Blank;enter;tab | d;e;f;Blank2;Hrf;Blank;(;VarEps;);Blank;:;Blank;Exp
 IM -> i;m;p;o;r;t;Blank2;Blank;Hrf;Blank | i;m;p;o;r;t;Blank2;Blank;Hrf;Blank;Blank2;a;s;Blank2;Blank;Hrf;Blank
 FI -> f;r;o;m;Blank2;Blank;Hrf;Blank;Blank2;IM
 NN -> N;o;n;e | N;o;n;e;Blank;Exp | Hrf;Blank;Op;Blank;N;o;n;e | N;o;n;e;Blank;Op;Blank;N;o;n;e
 F -> f;o;r;Blank2;Var;Blank2;i;n;Blank2;ExpF1;Blank;:
 ExpF1 -> r;a;n;g;e;Blank;ExpF;Blank | Var | String | List
 ExpF -> (;Blank;Int;Blank;) | (;Blank;Int;Blank;,;Blank;Int;Blank;) | (;Blank;Int;Blank;,;Blank;Int;Blank;,;Blank;Int;Blank;)
+P -> p;a;s;s;Blank
+R -> r;a;i;s;e;Blank
+W -> w;i;t;h;Blank2;Var;Blank2;a;s;Blank2;Var;Blank;:;Blank;enter

@@ -1,1 +1,2 @@
-[100]
+class kuc1ng :
+    
