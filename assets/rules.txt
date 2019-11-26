@@ -1,48 +1,84 @@
-*S -> A1
-A1 -> Exp | I | F | W | C | D | IM | FI | Bool | NN | String | Comment1 | A1;enter;A1 | List | P | R | W | Arr
-Exp -> Exp;Blank;Op;Blank;Exp | Signint | kbuka1;Blank;Exp;Blank;ktutup1 | Angka | OpPre;Blank2;Exp | Var
-Op -> plus | min | div | intdiv | kali | pangkat | mod | gt | lt | bitop | gte | lte | equals | assignment | nequals | Blank2;boolop;Blank2
-Int -> number
-Float -> Int;dot;Int
-Angka -> Int | Float
-Signint -> min;Int | plus;Int
-Op -> plus | min | div | intdiv | kali | pangkat | mod | gt | lt | gte | lte | equals | assignment | nequals | Blank2;boolop;Blank2 | bitop | bitshifts
-OpPre -> not | neg
-ListComp1 -> Blank;String;Blank;comma;Blank | ListComp1;ListComp1 | eps
-ListComp2 -> Blank;Angka;Blank;comma;Blank | ListComp2;ListComp2 | eps
-ListComp3 -> Blank;Var;Blank;comma;Blank | ListComp3;ListComp3 | eps
-List -> kbuka2;Blank;ktutup2 | kbuka2;ListComp1;String;ktutup2 | kbuka2;ListComp2;Angka;ktutup2 | kbuka2;ListComp2;Var;ktutup2
-Blank -> space | eps | Blank;Blank
-Blank2 -> space | Blank2;Blank2
-Var -> identifier
-VarEps -> Var | eps
-String -> string1 | string2 | multiline1 | multiline2
-Comment1 -> commentline | multiline1 | multiline2
-Bool -> bool
-Assign -> Var;assignment;Angka | Var;assignment;Var | Var;assignment;Bool
-W -> while;ExpW | while;ExpW;Exp
-ExpW -> Blank2;Exp;Blank;colon;Blank
-I -> if;ExpW | if;ExpW;enter;tab 
-El -> else;Blank;colon
-EI -> elif;ExpW
-C -> class;Blank2;Var;Blank;KB;Blank;KT;Blank;colon;Blank;enter;tab | class;Blank2;Var;Blank;KB;Blank;KT;Blank;colon;Blank;Exp;Blank
-KB -> kbuka1 | eps
-KT -> ktutup1 | eps
-Ret -> return;kbuka1;RetVal;ktutup1 | return;Blank2;RetVal
-RetVal -> Angka | Var | Func
-BreakCont -> break | continue
-D -> def;Blank2;Var;Blank;kbuka1;VarEps;ktutup1;Blank;colon;Blank;enter;tab | def;Blank2;Var;Blank;kbuka1;VarEps;ktutup1;Blank;colon;Blank;Exp
-IM -> import;Blank2;Blank;Var;Blank | import;Blank2;Blank;Var;Blank;Blank2;as;Blank2;Blank;Var;Blank
-FI -> from;Blank2;Blank;Var;Blank;Blank2;IM
-NN -> none | none;Blank;Exp | Var;Blank;Op;Blank;none | none;Blank;Op;Blank;none
-F -> for;Blank2;Var;Blank2;in;Blank2;ExpF1;Blank;colon
-ExpF1 -> Var | String | List
-ExpF -> kbuka1;Blank;Int;Blank;kbuka2 | kbuka1;Blank;Int;Blank;comma;Blank;Int;Blank;ktutup1 | kbuka1;Blank;Int;Blank;comma;Blank;Int;Blank;comma;Blank;Int;Blank;ktutup1
-P -> pass;Blank
-R -> raise;Blank
-W -> with;Blank2;Func;Blank2;as;Blank2;Func;Blank;colon;Blank;enter | with;Blank2;Var;dot;Func;Blank2;as;Blank2;Var;Blank;colon;Blank;enter
-Enter -> eps | enter | enter;enter
-Func -> Var;Blank;kbuka1;Arg;ktutup1;Blank
-Arg -> String | VarEps
-Arr -> Var;Blank;kbuka2;Blank;ArgArr;Blank;ktutup2;Blank;Enter
-ArgArr -> Var;Blank;Op;Blank;Int | Int;Blank;Op;Blank;Var | Var;Blank;Op;Blank;Var | Int;Blank;Op;Blank;Int | Blank;Var;Blank | Blank;Int;Blank
+*S -> file_input
+file_input -> enter | stmt | eps | file_input;file_input
+suite -> simple_stmt | enter;suite_star
+suite_star -> stmt | suite_star;suite_star
+stmt -> simple_stmt | compound_stmt
+simple_stmt -> small_stmt;enter
+small_stmt -> expr_stmt | pass_stmt | flow_stmt | import_stmt
+expr_stmt -> testlist;annassign | testlist;augassign;testlist | testlist;expr_stmt_star
+expr_stmt_star -> assignment;testlist | eps | expr_stmt_star;expr_stmt_star
+augassign -> plusassign | minassign | kaliassign | divassign | intdivassign | modassign | bitandassign | bitorassign | bitxorassign | shiftsassign | pangkatassign
+pass_stmt -> pass
+flow_stmt -> break_stmt | continue_stmt | return_stmt | raise_stmt
+break_stmt -> break
+continue_stmt -> continue
+return_stmt -> return | return;testlist
+raise_stmt -> raise | raise;test | raise;test;from;test
+import_stmt -> import_name | import_from
+import_name -> import;dotted_as_names
+import_from -> from;dotted_name;import;kali | from;dotted_name;import;kbuka1;import_as_names;ktutup1 | from;dotted_name;import;import_as_names
+import_as_names -> import_as_name;import_as_names_star
+import_as_names_star -> comma;import_as_name | eps | import_as_names_star;import_as_names_star
+import_as_name -> identifier | identifier;as;identifier
+dotted_as_names -> dotted_as_name;dotted_as_names_star
+dotted_as_names_star -> comma;dotted_as_name | eps | dotted_as_names_star;dotted_as_names_star
+dotted_as_name -> dotted_name | dotted_name;as;identifier
+dotted_name -> identifier
+dotted_name_star -> dot;identifier | eps | dotted_name_star;dotted_name_star
+compound_stmt -> if_stmt | while_stmt | for_stmt | with_stmt | funcdef | classdef
+if_stmt -> if;test;colon;suite;if_stmt_star | if;test;colon;suite;if_stmt_star;else;colon;suite
+if_stmt_star -> elif;test;colon;suite | eps | if_stmt_star;if_stmt_star
+while_stmt -> while;test;colon;suite | while;test;colon;suite;else;colon;suite
+for_stmt -> for;exprlist;in;testlist;colon;suite | for;exprlist;in;testlist;colon;suite;else;colon;suite
+with_stmt -> with;with_item;with_stmt_star;colon;suite
+with_stmt_star -> comma;with_item | eps | with_stmt_star;with_stmt_star
+with_item -> test | test;as;expr
+funcdef -> def;identifier;parameters;colon;suite
+typedargslist -> tfpdef;typedargslist_star | tfpdef;assignment;test;typedargslist_star
+typedargslist_star -> comma;tfpdef | comma;tfpdef;assignment;test | eps | typedargslist_star;typedargslist_star
+tfpdef -> identifier | identifier;colon;test
+classdef -> class;identifier;colon;suite | class;identifier;kbuka1;arglist;ktutup1;colon;suite
+test -> or_test | or_test;if;or_test;else;test
+test_nocond -> or_test
+or_test -> and_test;or_test_star
+or_test_star -> or;and_test | eps | or_test_star;or_test_star
+and_test -> not_test | and_test_star
+and_test_star -> and;not_test | eps | and_test_star;and_test_star
+not_test -> not;not_test | comparison
+comparison -> expr;comparison_star
+comparison_star -> comp_op;expr | eps | comparison_star;comparison_star
+comp_op -> lt | gt | equals | nequals | lte | gte | in | not;in | is | is;not
+expr -> xor_expr;expr_star
+expr_star -> bitor;xor_expr | eps | expr_star;expr_star
+xor_expr -> and_expr;xor_expr_star
+xor_expr_star -> bitxor;and_expr | eps | xor_expr_star;xor_expr_star
+and_expr -> shift_expr;and_expr_star
+and_expr_star -> bitand;shift_expr | eps | and_expr_star;and_expr_star
+shift_expr -> arith_expr;shift_expr_star
+shift_expr_star -> bitshifts;arith_expr | eps | shift_expr_star;shift_expr_star
+arith_expr -> term;arith_expr_star
+arith_expr_star -> plus;term | min;term | eps | arith_expr_star;arith_expr_star
+term -> factor;term_star
+term_star -> kali;factor | div;factor | intdiv;factor | mod;factor | eps | term_star;term_star
+factor -> plus;factor | min;factor | neg;factor | factor | power
+power -> atom_expr | pangkat;factor
+atom_expr -> atom;atom_expr_star
+atom_expr_star -> trailer | eps | atom_expr_star;atom_expr_star
+string -> string1 | string2 | multiline1 | multiline2 | string;string
+atom -> number | string | identifier | bool | none | kbuka1;ktutup1 | kbuka2;ktutup2 | kbuka3;ktutup3 | kbuka1;testlist_comp;ktutup1 | kbuka2;testlist_comp;ktutup2 | kbuka3;dictorsetmaker;ktutup3
+testlist_comp -> test;testlist_comp_star
+testlist_comp_star -> comma;test | eps | testlist_comp_star;testlist_comp_star
+trailer -> kbuka1;ktutup1 | kbuka1;arglist;ktutup1 | kbuka2;subscriptlist;ktutup2 | dot;identifier
+arglist -> argument;arglist_star
+arglist_star -> comma;argument | eps | arglist_star;arglist_star
+argument -> test | test;assignment;test
+subscriptlist -> subscript;subscript_star
+subscript_star -> comma;subscript | eps | subscript_star;subscript_star
+subscript -> test | test;colon;test;sliceop | colon;test;sliceop | test;colon;sliceop | test;colon;test | colon;sliceop | colon;test | test;colon | colon
+sliceop -> colon;test | colon
+exprlist -> expr;exprlist_star
+exprlist_star -> comma;expr | eps | exprlist_star;exprlist_star
+testlist -> test;testlist_star
+testlist_star -> comma;test | eps | testlist_star;testlist_star
+dictorsetmaker -> test;colon;test;dictorsetmaker_star1 | testlist
+dictorsetmaker_star -> comma;test;colon;test | eps | dictorsetmaker_star;dictorsetmaker_star

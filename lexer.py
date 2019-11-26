@@ -66,6 +66,17 @@ def lexer_run():
 			('"""[\s\S]*"""',	'multiline1'),
 			("'''[\s\S]*'''",	'multiline2'),
 			('\d+',				'number'),
+			('\+=',				'plusassign'),
+			('\-=',				'minassign'),
+			('\*=',				'kaliassign'),
+			('\/=',				'divassign'),
+			('\/\/=',			'intdivassign'),
+			('%=',				'modassign'),
+			('&=',				'bitandassign'),
+			('\|=',				'bitorassign'),
+			('\^=',				'bitxorassign'),
+			('>>=|<<=',			'shiftsassign'),
+			('\*\*=',			'pangkatassign'),
 			('[a-zA-Z_](\w+)?',	'identifier'),
 			('\+',				'plus'),
 			('%',				'mod'),
@@ -99,8 +110,12 @@ def lexer_run():
 	f = open('test.py')
 	s = f.read()
 	# print(s)
+	# 
 
 	matches = lex(s, rules)
 	lang = [x[0] for x in matches]
+	lang = [x for x in lang if x != 'tab']
+	lang = [x for x in lang if x != 'space']
+	lang.append('enter')
 
 	return lang
