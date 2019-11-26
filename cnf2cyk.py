@@ -62,6 +62,7 @@ def build_cyk(s):
 	init_cyk(s)
 
 	for i in range(2, len(s)+1):
+		print("{:.2f}%".format(100*i/(len(s)+1)))
 		arr = generate_sub(s, i)
 		for el in arr:
 			sub = split_halves(el)
