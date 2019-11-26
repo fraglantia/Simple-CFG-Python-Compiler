@@ -1,2 +1,1 @@
-class kuc1ng :
-    
+def kucing(): 2>1 

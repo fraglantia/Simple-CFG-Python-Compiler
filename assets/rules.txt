@@ -42,7 +42,7 @@ KT -> ) | eps
 Ret -> r;e;t;u;r;n;(;RetVal;) | r;e;t;u;r;n;Blank2;RetVal
 RetVal -> Angka | Var | Hrf
 BreakCont -> b;r;e;a;k | c;o;n;t;i;n;u;e
-D -> d;e;f;Blank2;Var;Blank;(;VarEps;);Blank;:;Blank;enter;tab | d;e;f;Blank2;Hrf;Blank;(;VarEps;);Blank;:;Blank;Exp
+D -> d;e;f;Blank2;Var;Blank;(;VarEps;);Blank;:;Blank;enter;tab | d;e;f;Blank2;Hrf;Blank;(;VarEps;);Blank;:;Blank;Exp;Blank
 IM -> i;m;p;o;r;t;Blank2;Blank;Hrf;Blank | i;m;p;o;r;t;Blank2;Blank;Hrf;Blank;Blank2;a;s;Blank2;Blank;Hrf;Blank
 FI -> f;r;o;m;Blank2;Blank;Hrf;Blank;Blank2;IM
 NN -> N;o;n;e | N;o;n;e;Blank;Exp | Hrf;Blank;Op;Blank;N;o;n;e | N;o;n;e;Blank;Op;Blank;N;o;n;e
