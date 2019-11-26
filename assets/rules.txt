@@ -12,7 +12,7 @@ augassign -> plusassign | minassign | kaliassign | divassign | intdivassign | mo
 pass_stmt -> pass
 flow_stmt -> break_stmt | continue_stmt | return_stmt | raise_stmt
 break_stmt -> break
-continue_stmt -> continue
+continue_stmt -> cont
 return_stmt -> return | return;testlist
 raise_stmt -> raise | raise;test | raise;test;from;test
 import_stmt -> import_name | import_from

@@ -1,3 +1,2 @@
-# hayoloh
-while a and b:
-	pass
+while 1/2:
+	continue
