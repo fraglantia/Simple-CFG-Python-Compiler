@@ -41,12 +41,10 @@ tfpdef -> identifier | identifier;colon;test
 classdef -> class;identifier;colon;suite | class;identifier;kbuka1;arglist;ktutup1;colon;suite
 test -> or_test | or_test;if;or_test;else;test
 test_nocond -> or_test
-orop -> or
 or_test -> and_test;or_test_star
-or_test_star -> orop;and_test | eps | or_test_star;or_test_star
-andop -> and
+or_test_star -> or;and_test | eps | or_test_star;or_test_star
 and_test -> not_test;and_test_star
-and_test_star -> andop;not_test | eps | and_test_star;and_test_star
+and_test_star -> and;not_test | eps | and_test_star;and_test_star
 not_test -> not;not_test | comparison
 comparison -> expr;comparison_star
 comparison_star -> comp_op;expr | eps | comparison_star;comparison_star
