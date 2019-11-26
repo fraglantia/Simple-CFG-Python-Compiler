@@ -85,8 +85,24 @@ def build_cyk(s):
 # build cyk =====================
 
 
+def find_last_acc():
+	global cyk
 
+	line = 1
+
+	for el in cyk:
+		if(start_symbol in el[1]):
+			line = el[0].count('enter')
+
+	return line
+
+
+# tampilkan kesalahan ===========
+
+t = time.time()
 terminals, variables, rules, start_symbol = generate_cnf()
+
+print("cnf generated in {:.2f} seconds".format(time.time()-t))
 
 cyk = []
 
@@ -96,23 +112,16 @@ s = ['enter' if x == '\n' else x for x in s]
 s = ['tab' if x == '\t' else x for x in s]
 # print(s)
 
-# s = list(input("input lang: "))
 
-# print()
-
-# pretty_print_rules()
-
-# print()
-
-# t = time.time()
+t = time.time()
 
 build_cyk(s)
 
 
 # print(cyk)
 
-for el in cyk:
-	print(el)
+# for el in cyk:
+# 	print(el)
 
 print()
 
@@ -122,5 +131,7 @@ if(verdict):
 	print('Accepted')
 else:
 	print('Syntax Error')
+	print("error at line {}!".format(find_last_acc()))
 
-# print(time.time()-t)
+print()
+print("cyk generated in {:.2f} seconds".format(time.time()-t))
