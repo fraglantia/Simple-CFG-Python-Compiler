@@ -1,7 +1,7 @@
 # paithonkompailer
 
 # run (temporary)
-python3 cnf2cyk.py
+python3 main.py <namafile>
 
 # todo:
 bikin cfg language python di ./assets/rules.txt, ./assets/variables.txt, ./assets/terminals.txt
