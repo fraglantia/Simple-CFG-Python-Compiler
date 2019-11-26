@@ -86,21 +86,28 @@ def build_cyk(s):
 
 # build cyk =====================
 
+def is_pre_arr(arr1, arr2):
+	# len(arr2) >= len(arr1)
+	for i in range(len(arr1)):
+		if(arr1[i] != arr2[i]):
+			return False
+	return True
 
-def find_last_acc():
+def find_last_acc(s):
 	global cyk
 
 	line = 1
 
 	for el in cyk:
 		if(start_symbol in el[1]):
-			line = el[0].count('enter')
+			if(is_pre_arr(el[0], s)):
+				print(el)
+				line = el[0].count('enter')
 
-	return line
+	return line+1
 
 
 # tampilkan kesalahan ===========
-
 
 s = lexer_run()
 print(s)
@@ -113,18 +120,10 @@ print("cnf generated in {:.2f} seconds".format(time.time()-t))
 
 cyk = []
 
-# f = open('./test.py')
-# s = list(f.read())
-# s = ['enter' if x == '\n' else x for x in s]
-# s = ['tab' if x == '\t' else x for x in s]
-# print(s)
 
 t = time.time()
 
 build_cyk(s)
-
-
-# print(cyk)
 
 for el in cyk:
 	print(el)
@@ -137,7 +136,7 @@ if(verdict):
 	print('Accepted')
 else:
 	print('Syntax Error')
-	print("error at line {}!".format(find_last_acc()))
+	print("error at line {}!".format(find_last_acc(s)))
 
 print()
 print("cyk generated in {:.2f} seconds".format(time.time()-t))

@@ -38,6 +38,8 @@ def load_rules(filename='./assets/rules.txt'):
 		rules[key] = new_arr
 		variables.append(key)
 
+	# print(rules)
+
 	return variables, rules, start_symbol
 
 def load_CFG():

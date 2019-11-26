@@ -15,7 +15,6 @@ def lex(s, rules):
 		idx += 1
 
 	full_pattern = re.compile('|'.join(patterns))
-	# print(full_pattern)
 
 	pos = 0
 
@@ -110,8 +109,7 @@ def lexer_run():
 
 	f = open('test.py')
 	s = f.read()
-	# print(s)
-	# 
+
 
 	matches = lex(s, rules)
 	lang = [x[0] for x in matches]
