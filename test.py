@@ -1,2 +1,2 @@
-"abc"
-print('z')
+while a and b:
+	pass
