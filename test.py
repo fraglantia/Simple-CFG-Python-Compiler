@@ -1,2 +1,2 @@
-def abc(a,b,c):
-	return abc
+"abc"
+print('z')

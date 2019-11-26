@@ -33,7 +33,7 @@ for_stmt -> for;exprlist;in;testlist;colon;suite | for;exprlist;in;testlist;colo
 with_stmt -> with;with_item;with_stmt_star;colon;suite
 with_stmt_star -> comma;with_item | eps | with_stmt_star;with_stmt_star
 with_item -> test | test;as;expr
-funcdef -> def;identifier;parameters;colon;suite
+funcdef -> def;identifier;parameters;colon;suite | def;identifier;parameters;min;gt;identifier;colon;suite
 parameters -> kbuka1;ktutup1 | kbuka1;typedargslist;ktutup1
 typedargslist -> tfpdef;typedargslist_star | tfpdef;assignment;test;typedargslist_star
 typedargslist_star -> comma;tfpdef | comma;tfpdef;assignment;test | eps | typedargslist_star;typedargslist_star
