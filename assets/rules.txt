@@ -19,7 +19,7 @@ VarEps -> Var | eps
 String -> string1 | string2 | multiline1 | multiline2
 Comment1 -> commentline | multiline1 | multiline2
 Bool -> bool
-Assign -> Var;assignment;Angka | Var;assignment;Var | Var;assignment;Bool
+Assign -> Var;Blank;assignment;Blank;Angka | Var;Blank;assignment;Blank;Var | Var;Blank;assignment;Blank;Bool
 W -> while;ExpW | while;ExpW;Exp
 ExpW -> Blank2;Exp;Blank;colon;Blank
 I -> if;ExpW | if;ExpW;enter;tab 
@@ -46,4 +46,4 @@ Func -> Var;Blank;kbuka1;Arg;ktutup1;Blank
 Arg -> String | VarEps
 Arr -> Var;Blank;kbuka2;Blank;ArgArr;Blank;ktutup2;Blank;Enter
 ArgArr -> Var;Blank;Op;Blank;Int | Int;Blank;Op;Blank;Var | Var;Blank;Op;Blank;Var | Int;Blank;Op;Blank;Int | Blank;Var;Blank | Blank;Int;Blank
-InitArray -> Var;Blank;=;Blank;List
+InitArray -> Var;Blank;assignment;Blank;List
