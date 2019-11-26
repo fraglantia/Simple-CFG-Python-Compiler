@@ -120,8 +120,8 @@ build_cyk(s)
 
 # print(cyk)
 
-# for el in cyk:
-# 	print(el)
+for el in cyk:
+	print(el)
 
 print()
 
