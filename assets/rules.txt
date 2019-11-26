@@ -41,7 +41,7 @@ ExpF -> kbuka1;Blank;Int;Blank;kbuka2 | kbuka1;Blank;Int;Blank;comma;Blank;Int;B
 P -> pass;Blank
 R -> raise;Blank
 W -> with;Blank2;Func;Blank2;as;Blank2;Func;Blank;colon;Blank;enter | with;Blank2;Var;dot;Func;Blank2;as;Blank2;Var;Blank;colon;Blank;enter
-Enter -> eps | enter | enter;enter
+Enter -> eps | enter | enter;Enter
 Func -> Var;Blank;kbuka1;Arg;ktutup1;Blank
 Arg -> String | VarEps
 Arr -> Var;Blank;kbuka2;Blank;ArgArr;Blank;ktutup2;Blank;Enter

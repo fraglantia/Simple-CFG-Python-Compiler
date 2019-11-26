@@ -1,7 +1,10 @@
-kucing = [1,2]
+kucing[asu]
 
 
-kucing[1]
+
+
+
+
 
 
 
