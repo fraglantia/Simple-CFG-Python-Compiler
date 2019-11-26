@@ -1,2 +1,1 @@
-class kucing () :
-    
+astaga = 1

@@ -1,56 +1,46 @@
 *S -> A1
-A1 -> Exp | I | F | W | C | D | IM | FI | Bool | NN | String | Comment1 | A1;enter;A1 | List | P | R | W | Func
-Exp -> Exp;Blank;Op;Blank;Exp | Hrf | Signint | (;Blank;Exp;Blank;) | Angka | OpPre;Blank2;Exp
-Op -> + | - | / | /;/ | * | *;* | % | > | < | & | | | ^ | >;= | <;= | =;= | = | !;= | Blank2;a;n;d;Blank2 | Blank2;o;r;Blank2
-Int -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | Int;Int
-Float -> Int;.;Int
+A1 -> Exp | I | F | W | C | D | IM | FI | Bool | NN | Assign | String | Comment1 | A1;enter;A1 | List | P | R | W
+Exp -> Exp;Blank;Op;Blank;Exp | Signint | kbuka1;Blank;Exp;Blank;ktutup1 | Angka | OpPre;Blank2;Exp | Var
+Op -> plus | min | div | intdiv | kali | pangkat | mod | gt | lt | bitop | gte | lte | equals | assignment | nequals | Blank2;boolop;Blank2
+Int -> number
+Float -> Int;dot;Int
 Angka -> Int | Float
-Hrf ->  | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | Hrf;Hrf
-Signint -> -;Int | +;Int
-Op -> + | - | / | /;/ | * | *;* | % | > | < | >;= | <;= | =;= | = | !;= | Blank2;a;n;d;Blank2 | Blank2;o;r;Blank2 | & | | | ^ | >;> | <;<
-OpPre -> n;o;t | ~
-OtherChar -> ` | ~ | @ | # | $ | { | } | \ | ; | / | _
-Kutipganda -> "
-KutipTunggal -> '
-ListComp1 -> Blank;String;Blank;,;Blank | ListComp1;ListComp1 | eps
-ListComp2 -> Blank;Angka;Blank;,;Blank | ListComp2;ListComp2 | eps
-ListComp3 -> Blank;Var;Blank;,;Blank | ListComp3;ListComp3 | eps
-List -> [;Blank;] | [;ListComp1;String;] | [;ListComp2;Angka;] | [;ListComp2;Var;]
-Blank ->   | eps | Blank;Blank
-Blank2 ->   | Blank2;Blank2
-US -> _ | eps
-VarInit -> Hrf | _
-VarExtend -> US;Hrf;US | US;Hrf;US;Int;US | US;Int;US | US;Int;US;Hf;US | VarExtend;VarExtend | eps
-Var -> VarInit;VarExtend
+Signint -> min;Int | plus;Int
+Op -> plus | min | div | intdiv | kali | pangkat | mod | gt | lt | gte | lte | equals | assignment | nequals | Blank2;boolop;Blank2 | bitop | bitshifts
+OpPre -> not | neg
+ListComp1 -> Blank;String;Blank;comma;Blank | ListComp1;ListComp1 | eps
+ListComp2 -> Blank;Angka;Blank;comma;Blank | ListComp2;ListComp2 | eps
+ListComp3 -> Blank;Var;Blank;comma;Blank | ListComp3;ListComp3 | eps
+List -> kbuka2;Blank;ktutup2 | kbuka2;ListComp1;String;ktutup2 | kbuka2;ListComp2;Angka;ktutup2 | kbuka2;ListComp2;Var;ktutup2
+Blank -> space | eps | Blank;Blank
+Blank2 -> space | Blank2;Blank2
+Var -> identifier
 VarEps -> Var | eps
-StringComp1 -> Hrf | Angka | Op | OtherChar | Blank | KutipTunggal | eps | StringComp1;StringComp1
-StringComp2 -> Hrf | Angka | Op | OtherChar | Blank | Kutipganda | eps | StringComp2;StringComp2
-String -> ";StringComp1;" | ';StringComp2;'
-Comment1 -> #;StringComp1 | #;StringComp2
-Bool -> T;r;u;e | F;a;l;s;e
-Assign -> Var;=;Angka | Var;=;Var | Var;=;Bool
-Pr -> p;r;i;n;t;(;PrComp;)
-PrComp -> Angka | String | Var
-W -> w;h;i;l;e;ExpW | w;h;i;l;e;ExpW;Exp
-ExpW -> Blank2;Int;Blank;:;Blank | Blank2;Exp;:;Blank
-I -> i;f;ExpW | tab;i;f;ExpW
-El -> e;l;s;e;Blank;:
-EI -> e;l;i;f;ExpW
-C -> c;l;a;s;s;Blank2;Var;Blank;KB;Blank;KT;Blank;:;Blank;enter;tab | c;l;a;s;s;Blank2;Var;Blank;KB;Blank;KT;Blank;:;Blank;Exp;Blank
-KB -> ( | eps
-KT -> ) | eps
-Ret -> r;e;t;u;r;n;(;RetVal;) | r;e;t;u;r;n;Blank2;RetVal
-RetVal -> Angka | Var | Hrf
-BreakCont -> b;r;e;a;k | c;o;n;t;i;n;u;e
-D -> d;e;f;Blank2;Var;Blank;(;VarEps;);Blank;:;Blank;enter;tab | d;e;f;Blank2;Hrf;Blank;(;VarEps;);Blank;:;Blank;Exp;Blank
-IM -> i;m;p;o;r;t;Blank2;Blank;Hrf;Blank | i;m;p;o;r;t;Blank2;Blank;Hrf;Blank;Blank2;a;s;Blank2;Blank;Hrf;Blank
-FI -> f;r;o;m;Blank2;Blank;Hrf;Blank;Blank2;IM
-NN -> N;o;n;e | N;o;n;e;Blank;Exp | Hrf;Blank;Op;Blank;N;o;n;e | N;o;n;e;Blank;Op;Blank;N;o;n;e
-F -> f;o;r;Blank2;Var;Blank2;i;n;Blank2;ExpF1;Blank;:
-ExpF1 -> r;a;n;g;e;Blank;ExpF;Blank | Var | String | List
-ExpF -> (;Blank;Int;Blank;) | (;Blank;Int;Blank;,;Blank;Int;Blank;) | (;Blank;Int;Blank;,;Blank;Int;Blank;,;Blank;Int;Blank;)
-P -> p;a;s;s;Blank
-R -> r;a;i;s;e;Blank
-W -> w;i;t;h;Blank2;Var;Blank2;a;s;Blank2;Var;Blank;:;Blank;enter | w;i;t;h;Blank2;Var;.;Func;Blank2;a;s;Blank2;Var;Blank;:;Blank;enter
+String -> string1 | string2 | multiline1 | multiline2
+Comment1 -> commentline | multiline1 | multiline2
+Bool -> bool
+Assign -> Var;assignment;Angka | Var;assignment;Var | Var;assignment;Bool | Var;assignment;List
+W -> while;ExpW | while;ExpW;Exp
+ExpW -> Blank2;Exp;Blank;colon;Blank
+I -> if;ExpW | if;ExpW;enter;tab 
+El -> else;Blank;colon
+EI -> elif;ExpW
+C -> class;Blank2;Var;Blank;KB;Blank;KT;Blank;colon;Blank;enter;tab | class;Blank2;Var;Blank;KB;Blank;KT;Blank;colon;Blank;Exp;Blank
+KB -> kbuka1 | eps
+KT -> ktutup1 | eps
+Ret -> return;kbuka1;RetVal;ktutup1 | return;Blank2;RetVal
+RetVal -> Angka | Var | Func
+BreakCont -> break | continue
+D -> def;Blank2;Var;Blank;kbuka1;VarEps;ktutup1;Blank;colon;Blank;enter;tab | def;Blank2;Var;Blank;kbuka1;VarEps;ktutup1;Blank;colon;Blank;Exp
+IM -> import;Blank2;Blank;Var;Blank | import;Blank2;Blank;Var;Blank;Blank2;as;Blank2;Blank;Var;Blank
+FI -> from;Blank2;Blank;Var;Blank;Blank2;IM
+NN -> none | none;Blank;Exp | Var;Blank;Op;Blank;none | none;Blank;Op;Blank;none
+F -> for;Blank2;Var;Blank2;in;Blank2;ExpF1;Blank;colon
+ExpF1 -> Var | String | List
+ExpF -> kbuka1;Blank;Int;Blank;kbuka2 | kbuka1;Blank;Int;Blank;comma;Blank;Int;Blank;ktutup1 | kbuka1;Blank;Int;Blank;comma;Blank;Int;Blank;comma;Blank;Int;Blank;ktutup1
+P -> pass;Blank
+R -> raise;Blank
+W -> with;Blank2;Func;Blank2;as;Blank2;Func;Blank;colon;Blank;enter | with;Blank2;Var;dot;Func;Blank2;as;Blank2;Var;Blank;colon;Blank;enter
 Enter -> eps | enter | enter;enter
-Func -> Var;Blank;(;VarEps;);Blank
+Func -> Var;Blank;kbuka1;Arg;ktutup1;Blank
+Arg -> String | VarEps

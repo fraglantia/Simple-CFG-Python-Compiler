@@ -1,4 +1,5 @@
 from cfg2cnf import *
+from lexer import *
 import itertools
 import time
 
@@ -99,6 +100,11 @@ def find_last_acc():
 
 # tampilkan kesalahan ===========
 
+
+s = lexer_run()
+print(s)
+
+
 t = time.time()
 terminals, variables, rules, start_symbol = generate_cnf()
 
@@ -106,12 +112,11 @@ print("cnf generated in {:.2f} seconds".format(time.time()-t))
 
 cyk = []
 
-f = open('./test.py')
-s = list(f.read())
-s = ['enter' if x == '\n' else x for x in s]
-s = ['tab' if x == '\t' else x for x in s]
+# f = open('./test.py')
+# s = list(f.read())
+# s = ['enter' if x == '\n' else x for x in s]
+# s = ['tab' if x == '\t' else x for x in s]
 # print(s)
-
 
 t = time.time()
 
@@ -120,8 +125,8 @@ build_cyk(s)
 
 # print(cyk)
 
-# for el in cyk:
-# 	print(el)
+for el in cyk:
+	print(el)
 
 print()
 
