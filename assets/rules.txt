@@ -1,5 +1,5 @@
 *S -> A1
-A1 -> Exp | I | F | W | C | D | IM | FI | Bool | NN | String | Comment1 | A1;enter;A1 | List
+A1 -> Exp | I | F | W | C | D | IM | FI | Bool | NN | String | Comment1 | A1;enter;A1 | List | P | R | W
 Exp -> Exp;Blank;Op;Blank;Exp | Hrf | Signint | (;Blank;Exp;Blank;) | Angka | OpPre;Blank2;Exp
 Op -> + | - | / | /;/ | * | *;* | % | > | < | & | | | ^ | >;= | <;= | =;= | = | !;= | Blank2;a;n;d;Blank2 | Blank2;o;r;Blank2
 Int -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | Int;Int
