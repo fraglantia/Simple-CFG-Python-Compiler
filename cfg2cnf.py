@@ -12,6 +12,7 @@ def load_terminals(filename='./assets/terminals.txt'):
 
 def load_rules(filename='./assets/rules.txt'):
 	# RULES AS AN ARRAY OF TUPLES, STATE AND VALUE (STATE -> A;B | c;d, newline seperated), * in state = start
+	# referensi rules dari https://docs.python.org/3.7/reference/grammar.html
 	f = open(filename)
 	data = f.read()
 	lines = data.split('\n')

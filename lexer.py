@@ -1,5 +1,5 @@
+# diadaptasi dari https://gist.github.com/eliben/5797351
 import re
-
 
 def lex(s, rules):
 	matches = []
