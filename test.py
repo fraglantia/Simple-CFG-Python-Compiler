@@ -1,2 +1,1 @@
-class kuc1ng :
-	
+1
