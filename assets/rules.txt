@@ -1,5 +1,5 @@
 *S -> A1
-A1 -> Exp | I | F | W | C | D | IM | FI | Bool | NN | String | Comment1 | A1;enter;A1 | List | P | R | W | Arr
+A1 -> Exp | I | F | W | C | D | IM | FI | Bool | NN | String | Comment1 | A1;enter;A1 | List | P | R | W | Arr | InitArray
 Exp -> Exp;Blank;Op;Blank;Exp | Signint | kbuka1;Blank;Exp;Blank;ktutup1 | Angka | OpPre;Blank2;Exp | Var
 Op -> plus | min | div | intdiv | kali | pangkat | mod | gt | lt | bitop | gte | lte | equals | assignment | nequals | Blank2;boolop;Blank2
 Int -> number
@@ -46,3 +46,4 @@ Func -> Var;Blank;kbuka1;Arg;ktutup1;Blank
 Arg -> String | VarEps
 Arr -> Var;Blank;kbuka2;Blank;ArgArr;Blank;ktutup2;Blank;Enter
 ArgArr -> Var;Blank;Op;Blank;Int | Int;Blank;Op;Blank;Var | Var;Blank;Op;Blank;Var | Int;Blank;Op;Blank;Int | Blank;Var;Blank | Blank;Int;Blank
+InitArray -> Var;Blank;=;Blank;List
