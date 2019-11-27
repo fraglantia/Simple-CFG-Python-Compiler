@@ -6,8 +6,9 @@ stmt -> simple_stmt | compound_stmt
 simple_stmt -> small_stmt;enter
 comment -> commentline | multiline1 | multiline2
 small_stmt -> expr_stmt | pass_stmt | flow_stmt | import_stmt | comment
-expr_stmt -> testlist;annassign | testlist;augassign;testlist | testlist;expr_stmt_star
-expr_stmt_star -> assignment;testlist | eps | expr_stmt_star;expr_stmt_star
+expr_stmt -> atom_nonlitlist;augassign;testlist | atom_nonlitlist;expr_stmt_star;expr_stmt_star_end
+expr_stmt_star -> assignment;atom_nonlitlist | eps | expr_stmt_star;expr_stmt_star
+expr_stmt_star_end -> assignment;testlist | eps
 augassign -> plusassign | minassign | kaliassign | divassign | intdivassign | modassign | bitandassign | bitorassign | bitxorassign | shiftsassign | pangkatassign
 pass_stmt -> pass
 flow_stmt -> break_stmt | continue_stmt | return_stmt | raise_stmt
@@ -68,6 +69,13 @@ atom_expr -> atom;atom_expr_star
 atom_expr_star -> trailer | eps | atom_expr_star;atom_expr_star
 string -> string1 | string2 | multiline1 | multiline2 | string;string
 atom -> number | string | identifier | bool | none | kbuka1;ktutup1 | kbuka2;ktutup2 | kbuka3;ktutup3 | kbuka1;testlist_comp;ktutup1 | kbuka2;testlist_comp;ktutup2 | kbuka3;dictorsetmaker;ktutup3
+atom_nonlit -> identifier | kbuka1;ktutup1 | kbuka2;ktutup2
+atom_nonlit_expr -> atom_nonlit | atom_nonlit;atom_nonlit_expr_star_2 | atom;atom_nonlit_expr_star_2
+atom_nonlit_expr_star_1 -> trailer_2 | atom_nonlit_expr_star_1;atom_nonlit_expr_star_1
+atom_nonlit_expr_star_2 -> atom_expr_star;atom_nonlit_expr_star_1
+trailer_2 -> kbuka2;subscriptlist;ktutup2 | dot;identifier
+atom_nonlitlist -> atom_nonlit_expr;atom_nonlitlist_star
+atom_nonlitlist_star -> comma;atom_nonlit_expr | eps | atom_nonlitlist_star;atom_nonlitlist_star
 testlist_comp -> test;testlist_comp_star
 testlist_comp_star -> comma;test | eps | testlist_comp_star;testlist_comp_star
 trailer -> kbuka1;ktutup1 | kbuka1;arglist;ktutup1 | kbuka2;subscriptlist;ktutup2 | dot;identifier
