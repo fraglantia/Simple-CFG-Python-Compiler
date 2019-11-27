@@ -439,5 +439,6 @@ def generate_cnf():
 	eliminate_unit()
 	eliminate_nonsingle_term()
 	eliminate_nondouble_var()
+	# print(rules)
 	# pretty_print_rules()
 	return terminals, variables, rules, start_symbol

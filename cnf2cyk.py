@@ -111,7 +111,7 @@ def find_last_acc(s):
 def compile_CYK(path):
 	global cyk, terminals, variables, rules, start_symbol
 	s = lexer_run(path)
-	# print(s)
+	print(s)
 
 	t = time.time()
 	terminals, variables, rules, start_symbol = generate_cnf()

@@ -63,7 +63,7 @@ arith_expr_star -> plus;term | min;term | eps | arith_expr_star;arith_expr_star
 term -> factor;term_star
 term_star -> kali;factor | div;factor | intdiv;factor | mod;factor | eps | term_star;term_star
 factor -> plus;factor | min;factor | neg;factor | factor | power
-power -> atom_expr | pangkat;factor
+power -> atom_expr | atom_expr;pangkat;factor
 atom_expr -> atom;atom_expr_star
 atom_expr_star -> trailer | eps | atom_expr_star;atom_expr_star
 string -> string1 | string2 | multiline1 | multiline2 | string;string
